@@ -1,0 +1,78 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+           targetNamespace="http://spring.io/guides/gs-producing-web-service" elementFormDefault="qualified">
+
+    <xs:element name="getCountry1Request">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCountry1Response">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country" type="tns:country1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="country1">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="population" type="xs:int"/>
+            <xs:element name="capital" type="xs:string"/>
+            <xs:element name="currency" type="tns:currency1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="currency1">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="GBP"/>
+            <xs:enumeration value="EUR"/>
+            <xs:enumeration value="PLN"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    
+   <xs:element name="influenzaReq">
+        <xs:complexType>
+            <xs:sequence>
+            <xs:element name="noOfRec" type="xs:int"/>
+            <xs:element name="influenzaReqDtl" type="tns:influenzaReqDtl"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    
+    <xs:complexType name="influenzaReqDtl">
+        <xs:sequence>
+            <xs:element name="engName" type="xs:string"/>
+            <xs:element name="docType" type="tns:docType"/>
+        </xs:sequence>
+    </xs:complexType>
+        
+    <xs:simpleType name="docType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ID"/>
+            <xs:enumeration value="BC"/>
+            <xs:enumeration value="PP"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:element name="influenzaRsp">
+        <xs:complexType>
+            <xs:sequence>
+            <xs:element name="influenzaRspDtl" type="tns:influenzaRspDtl"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="influenzaRspDtl">
+        <xs:sequence>
+            <xs:element name="hkRegNo" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+</xs:schema>
